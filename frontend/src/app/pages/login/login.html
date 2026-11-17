@@ -1,0 +1,64 @@
+
+<div class="login-container">
+  <div class="login-card">
+
+    <div class="logo">🎓</div>
+
+    <h1>Student Management System</h1>
+
+    <p class="subtitle">
+      Welcome back! Please sign in to continue.
+    </p>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          autocomplete="username"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        />
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">
+          {{ errorMessage }}
+        </p>
+      }
+
+      <button
+        type="submit"
+        class="login-btn"
+        [disabled]="isLoading || loginForm.invalid"
+      >
+        {{ isLoading ? 'Signing In...' : 'Sign In' }}
+      </button>
+
+    </form>
+
+    <p class="footer-text">
+      Secure Admin & Staff Portal
+    </p>
+
+  </div>
+</div>
