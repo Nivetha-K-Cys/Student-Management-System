@@ -20,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. Controllers and OpenAPI
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+//builder.Services.AddSwaggerGen();
 
 // 2. Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -31,6 +32,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // 3. Repository dependency injection
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
 
 // 4. Service dependency injection
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -123,6 +129,12 @@ if (app.Environment.IsDevelopment())
         app.Configuration,
         hasher);
 }
+
+//if (app.Environment.IsDevelopment())
+//{
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
+//}
 
 // 12. Middleware pipeline
 app.UseHttpsRedirection();

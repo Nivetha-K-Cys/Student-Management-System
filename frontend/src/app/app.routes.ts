@@ -52,5 +52,33 @@ export const routes: Routes = [
     data: { role: 'Admin' }
   },
 
+// Feature 3 - Department List (Admin & Staff)
+  {
+    path: 'departments',
+    loadComponent: () =>
+      import('./features/departments/department-list/department-list')
+        .then(m => m.DepartmentList),
+    canActivate: [authGuard]
+  },
+
+  // Feature 3 - Add Department (Admin Only)
+  {
+    path: 'departments/add',
+    loadComponent: () =>
+      import('./features/departments/department-form/department-form')
+        .then(m => m.DepartmentForm),
+    canActivate: [authGuard],
+    data: { role: 'Admin' }
+  },
+
+  // Feature 3 - Edit Department (Admin Only)
+  {
+    path: 'departments/edit/:id',
+    loadComponent: () =>
+      import('./features/departments/department-form/department-form')
+        .then(m => m.DepartmentForm),
+    canActivate: [authGuard],
+    data: { role: 'Admin' }
+  },
   { path: '**', redirectTo: '' }
 ];

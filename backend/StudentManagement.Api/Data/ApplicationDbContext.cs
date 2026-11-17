@@ -16,6 +16,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Student> Students { get; set; }
 
+    public DbSet<Department> Departments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

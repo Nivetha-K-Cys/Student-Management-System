@@ -1,0 +1,108 @@
+
+<div class="form-page">
+
+  <div class="form-card">
+
+    <div class="form-header">
+      <h2>
+        {{ isEditMode ? 'Edit Department' : 'Add Department' }}
+      </h2>
+
+      <p>
+        Enter the department information below
+      </p>
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
+
+    @if (loading) {
+      <p>Loading department...</p>
+    } @else {
+      <form
+        [formGroup]="departmentForm"
+        (ngSubmit)="saveDepartment()"
+      >
+
+        <div class="form-group">
+          <label>Department Name *</label>
+
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Enter department name"
+          />
+
+          @if (
+            departmentForm.controls.name.touched &&
+            departmentForm.controls.name.hasError('required')
+          ) {
+            <small>Department name is required.</small>
+          }
+
+          @if (departmentForm.controls.name.hasError('maxlength')) {
+            <small>Maximum 100 characters allowed.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label>Department Code *</label>
+
+          <input
+            type="text"
+            formControlName="code"
+            placeholder="Example: CSE"
+          />
+
+          @if (
+            departmentForm.controls.code.touched &&
+            departmentForm.controls.code.hasError('required')
+          ) {
+            <small>Department code is required.</small>
+          }
+
+          @if (departmentForm.controls.code.hasError('maxlength')) {
+            <small>Maximum 20 characters allowed.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+
+          <textarea
+            formControlName="description"
+            rows="4"
+            placeholder="Enter department description"
+          ></textarea>
+
+          @if (departmentForm.controls.description.hasError('maxlength')) {
+            <small>Maximum 500 characters allowed.</small>
+          }
+        </div>
+
+        <div class="form-actions">
+          <a routerLink="/departments" class="cancel-btn">
+            Cancel
+          </a>
+
+          <button
+            type="submit"
+            [disabled]="saving || departmentForm.invalid"
+          >
+            {{
+              saving
+                ? 'Saving...'
+                : isEditMode
+                  ? 'Update Department'
+                  : 'Add Department'
+            }}
+          </button>
+        </div>
+
+      </form>
+    }
+
+  </div>
+
+</div>
