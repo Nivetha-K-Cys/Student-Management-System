@@ -25,3 +25,56 @@ button {
   border-radius: 8px;
   cursor: pointer;
 }
+.manage-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #4f46e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.manage-btn:hover {
+  background: #4338ca;
+}
+
+/* Student Management Section */
+.student-section {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.student-section h3 {
+  margin-bottom: 12px;
+}
+
+.student-section p {
+  margin-bottom: 18px;
+}
+
+/* Manage Students Button */
+.manage-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  margin: 0;
+  background-color: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.manage-btn:hover {
+  background-color: #4338ca;
+}
+
+/* Logout Button */
+.dashboard > button {
+  display: block;
+  margin-top: 24px;
+}

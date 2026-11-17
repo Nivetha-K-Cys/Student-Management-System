@@ -1,0 +1,57 @@
+
+<div class="form-page">
+  <div class="form-card">
+    <h1>Add New Student</h1>
+    <p>Enter student information</p>
+
+    <form #studentForm="ngForm"
+          (ngSubmit)="saveStudent()">
+
+      <label>Student Name</label>
+      <input name="name"
+             [(ngModel)]="student.name"
+             required maxlength="100" />
+
+      <label>Email Address</label>
+      <input type="email"
+             name="email"
+             [(ngModel)]="student.email"
+             required email />
+
+      <label>Register Number</label>
+      <input name="registerNumber"
+             [(ngModel)]="student.registerNumber"
+             required maxlength="20" />
+
+      <label>Department</label>
+      <input name="department"
+             [(ngModel)]="student.department"
+             required />
+
+      <label>Year</label>
+      <select name="year"
+              [(ngModel)]="student.year">
+        <option [ngValue]="1">1st Year</option>
+        <option [ngValue]="2">2nd Year</option>
+        <option [ngValue]="3">3rd Year</option>
+        <option [ngValue]="4">4th Year</option>
+      </select>
+
+      <label>Phone Number</label>
+      <input name="phoneNumber"
+             [(ngModel)]="student.phoneNumber"
+             maxlength="20" />
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <div class="actions">
+        <a routerLink="/students">Cancel</a>
+
+        <button type="submit"
+                [disabled]="studentForm.invalid || saving">
+          {{ saving ? 'Saving...' : 'Save Student' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

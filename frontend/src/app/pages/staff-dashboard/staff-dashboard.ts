@@ -1,12 +1,12 @@
 
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-staff-dashboard',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './staff-dashboard.html',
   styleUrl: './staff-dashboard.css'
 })

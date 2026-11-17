@@ -22,5 +22,35 @@ export const routes: Routes = [
     data: { role: 'Staff' }
   },
 
+  // Feature 2 - Student List (Admin & Staff)
+  {
+  path: 'students',
+  loadComponent: () =>
+    import('./pages/student-list/student-list')
+      .then(m => m.StudentList),
+  canActivate: [authGuard],
+  
+},
+
+  // Feature 2 - Add Student (Admin Only)
+  {
+    path: 'students/add',
+    loadComponent: () =>
+      import('./pages/add-student/add-student')
+        .then(m => m.AddStudent),
+    canActivate: [authGuard],
+    data: { role: 'Admin' }
+  },
+
+  // Feature 2 - Edit Student (Admin Only)
+  {
+    path: 'students/edit/:id',
+    loadComponent: () =>
+      import('./pages/edit-student/edit-student')
+        .then(m => m.EditStudent),
+    canActivate: [authGuard],
+    data: { role: 'Admin' }
+  },
+
   { path: '**', redirectTo: '' }
 ];

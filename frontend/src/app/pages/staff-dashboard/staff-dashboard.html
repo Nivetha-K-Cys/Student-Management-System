@@ -4,8 +4,17 @@
   <p>Welcome, {{ auth.getName() }}!</p>
   <p>Role: Staff</p>
 
+  
+  
+<div class="student-section">
   <h3>Student Management</h3>
-  <p>Student features will be added in Feature 2.</p>
+  <p>View and search student records.</p>
+
+  <a routerLink="/students" class="manage-btn">
+    View Students
+  </a>
+</div>
+
 
   <button (click)="logout()">Logout</button>
 </div>
